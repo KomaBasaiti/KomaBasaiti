@@ -230,7 +230,7 @@ def bridge(title, body):
 
 PROB = f"""
 <!-- ======================= 4 ======================= -->
-<h2><span class="num">4</span> Probability rules and conditional probability</h2>
+<h2><span class="num">9</span> Probability rules and conditional probability</h2>
 
 <div class="grid2">
 <div>
@@ -276,7 +276,7 @@ PROB = f"""
 {box('trap', 'Mutually exclusive is NOT the same as independent', '<p>Mutually exclusive: A and B <b>can\'t both happen</b> (Pr(A ∩ B) = 0). Independent: one <b>doesn\'t change</b> the chance of the other. If both events can happen on their own, mutually exclusive events are always <b>dependent</b>. Always prove independence with numbers: compare Pr(A ∩ B) with Pr(A) × Pr(B).</p>')}
 
 <div class="try">
-<h4>Try it yourself — Section 4</h4>
+<h4>Try it yourself — Section 9</h4>
 <ol>
 <li>Pr(A) = 0.6, Pr(B) = 0.5 and Pr(A ∩ B) = 0.3. Find Pr(A ∪ B) and Pr(A′ ∩ B′).</li>
 <li>Are A and B in Q1 independent? Show why.</li>
@@ -284,7 +284,7 @@ PROB = f"""
 </div>
 
 <!-- ======================= 5 ======================= -->
-<h2><span class="num">5</span> Discrete random variables and the binomial distribution</h2>
+<h2><span class="num">10</span> Discrete random variables and the binomial distribution</h2>
 {bridge('E(X) is the "mean from a frequency table" you already know', '''<p>In Year 7: mean = Σ(score × frequency) ÷ total. Divide each frequency by the total and you get a probability — so the mean becomes <span class="m">E(X) = Σ x · Pr(X = x)</span>.</p>
 <table>
 <tr><th>Books read, x</th><td class="c">0</td><td class="c">1</td><td class="c">2</td><td class="c">3</td><th>Total</th></tr>
@@ -343,7 +343,7 @@ PROB = f"""
 {box('check', 'Binomial variance is always smaller than the mean', '<p>np(1 − p) &lt; np. Bi(20, 0.4): mean 8, variance 4.8. If you get a variance of 8 or more, you forgot the (1 − p).</p>')}
 
 <div class="try">
-<h4>Try it yourself — Section 5</h4>
+<h4>Try it yourself — Section 10</h4>
 <ol>
 <li>x = 1, 2, 3 with Pr = 0.2, k, 0.5. Find k and E(X).</li>
 <li>X ~ Bi(10, 0.1). Find E(X), Var(X) and Pr(X ≥ 1).</li>
@@ -352,7 +352,7 @@ PROB = f"""
 </div>
 
 <!-- ======================= 6 ======================= -->
-<h2><span class="num">6</span> Continuous random variables (probability density functions)</h2>
+<h2><span class="num">11</span> Continuous random variables (probability density functions)</h2>
 <div class="grid2">
 <div>
 <table>
@@ -372,14 +372,14 @@ PROB = f"""
 {box('trick', 'Unknown constant? Set the area to 1', '<p>If f(x) = kx on [0, 4], then ∫ kx dx = 8k = 1, so k = 1/8. Then check k makes f(x) ≥ 0.</p>')}
 
 <div class="try">
-<h4>Try it yourself — Section 6</h4>
+<h4>Try it yourself — Section 11</h4>
 <ol>
 <li>f(x) = x/2 on [0, 2]. Show it is a pdf, then find Pr(X &lt; 1) and E(X).</li>
 </ol>
 </div>
 
 <!-- ======================= 7 ======================= -->
-<h2><span class="num">7</span> The normal distribution  X ~ N(μ, σ²)</h2>
+<h2><span class="num">12</span> The normal distribution  X ~ N(μ, σ²)</h2>
 <div class="figrow">{bell_fig}</div>
 <table>
 <tr><th>Fact</th><th>What to remember</th></tr>
@@ -405,8 +405,18 @@ PROB = f"""
 {box('trap', 'The calculator wants σ, not σ²', '<p>X ~ N(50, 9): type σ = <b>3</b>. Write "σ = …" on the page before you touch the calculator.</p>')}
 {box('trap', 'Standard deviations don\'t add — variances do', '<p>For two independent X₁, X₂ with sd σ, Var(X₁ + X₂) = 2σ², so sd = σ√2. But 2X (one value doubled) has sd 2σ.</p>')}
 
+
+<h3>More normal-distribution tools</h3>
+<table>
+<tr><th>Tool</th><th>Rule</th><th>Example</th></tr>
+<tr><td>Quartiles and IQR</td><td class="m">Q1, Q3 = μ ∓ 0.6745σ; IQR = 1.349σ</td><td>N(100, 15²): Q1 = 89.88, Q3 = 110.12, IQR = 20.23</td></tr>
+<tr><td>Normal approximation to a binomial</td><td class="m">Bi(n, p) ≈ N(np, np(1 − p)) if np ≥ 10 and n(1 − p) ≥ 10</td><td>Bi(50, 0.1) fails: np = 5</td></tr>
+<tr><td>Transforming X</td><td class="m">aX + b ~ N(aμ + b, a²σ²)</td><td>N(5, 2²) under 3X + 2 → N(17, 6²)</td></tr>
+</table>
+{ex('Pr(X &lt; 40) = 0.1 and Pr(X &gt; 70) = 0.05. Find μ and σ.<br>z-values: invNorm(0.1) = −1.2816, invNorm(0.95) = 1.6449.<br>40 = μ − 1.2816σ and 70 = μ + 1.6449σ. Subtract: 30 = 2.9265σ → <b>σ ≈ 10.25</b>, then <b>μ ≈ 53.14</b>.', 'Example — μ and σ both unknown')}
+
 <div class="try">
-<h4>Try it yourself — Section 7</h4>
+<h4>Try it yourself — Section 12</h4>
 <ol>
 <li>X ~ N(100, 15²). Use the 68–95–99.7 rule to estimate Pr(X &gt; 130).</li>
 <li>X ~ N(100, 15²). Pr(X &gt; k) = 0.1. What number do you enter into invNorm?</li>
@@ -414,7 +424,7 @@ PROB = f"""
 </div>
 
 <!-- ======================= 8 ======================= -->
-<h2><span class="num">8</span> Sample proportions and confidence intervals</h2>
+<h2><span class="num">13</span> Sample proportions and confidence intervals</h2>
 {bridge('Census vs sample → p vs p̂', '''<table>
 <tr><th></th><th>Population (census)</th><th>Sample</th></tr>
 <tr><td>Who</td><td>everyone</td><td>a group chosen from the population</td></tr>
@@ -459,7 +469,7 @@ PROB = f"""
 {box('check', 'Three checks on any interval', '<p>① p̂ is exactly the middle. ② Both ends are between 0 and 1. ③ On the same data, 99% is wider than 95%, which is wider than 90%.</p>')}
 
 <div class="try">
-<h4>Try it yourself — Section 8</h4>
+<h4>Try it yourself — Section 13</h4>
 <ol>
 <li>In a random sample of 400 people, 120 like a new app. Find p̂ and an approximate 95% confidence interval for p.</li>
 <li>A poll wants a margin of error of 0.05 at 95% confidence with no estimate of p. What sample size is needed?</li>
@@ -470,21 +480,21 @@ PROB = f"""
 
 PROB_ANS = """
 <div>
-<h4>Section 4</h4>
+<h4>Section 9</h4>
 <p>1. Pr(A ∪ B) = 0.6 + 0.5 − 0.3 = <b>0.8</b>; neither = 1 − 0.8 = <b>0.2</b></p>
 <p>2. 0.6 × 0.5 = 0.3 = Pr(A ∩ B) → <b>independent</b></p>
-<h4>Section 5</h4>
+<h4>Section 10</h4>
 <p>1. 0.2 + k + 0.5 = 1 → <b>k = 0.3</b>; E(X) = 0.2 + 0.6 + 1.5 = <b>2.3</b></p>
 <p>2. E(X) = 1, Var(X) = 0.9, Pr(X ≥ 1) = 1 − 0.9¹⁰ ≈ <b>0.6513</b></p>
 <p>3. <b>Pr(3 ≤ X ≤ 5)</b></p>
-<h4>Section 6</h4>
+<h4>Section 11</h4>
 <p>1. f ≥ 0 and ∫₀² x/2 dx = [x²/4] = 1 ✓; Pr(X &lt; 1) = <b>1/4</b>; E(X) = ∫₀² x²/2 dx = <b>4/3</b></p>
 </div>
 <div>
-<h4>Section 7</h4>
+<h4>Section 12</h4>
 <p>1. 130 = μ + 2σ → about 0.025 (exact 0.0228)</p>
 <p>2. Left area 1 − 0.1 = <b>0.9</b>: invNorm(0.9, 100, 15) ≈ 119.2</p>
-<h4>Section 8</h4>
+<h4>Section 13</h4>
 <p>1. p̂ = 0.3; M = 1.96√(0.3 × 0.7/400) ≈ 0.0449 → <b>(0.255, 0.345)</b></p>
 <p>2. n ≥ 1.96²/(4 × 0.05²) = 384.2 → <b>n = 385</b></p>
 <p>3. It is <b>halved</b> (M ∝ 1/√n)</p>

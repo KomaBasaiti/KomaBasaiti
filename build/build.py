@@ -6,6 +6,8 @@ import sys
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 from svg import graph, C1, C2, C3, C4, INK  # noqa: E402
 from prob import PROB, PROB_ANS, PROB_CSS  # noqa: E402
+from calc import EXTRA_S1, EXTRA_S2, EXTRA_S3, S3_TRY, S3_ANS, CALC, CALC_ANS  # noqa: E402
+from extra import EXTRA, EXTRA_ANS  # noqa: E402
 
 PI = math.pi
 s = math.sin
@@ -216,7 +218,7 @@ svg.g text.qs {{ font-size:9px; text-anchor:middle; }}
   <div class="logo">PhD</div>
   <div>
     <h1>Formulas &amp; Tricks — Made Easy <span class="pill">Units 3 &amp; 4</span></h1>
-    <p>VCE Mathematical Methods Units 3 &amp; 4 · Functions · Trigonometry · Transformations · Probability · Normal distribution · Sample proportions</p>
+    <p>VCE Mathematical Methods Units 3 &amp; 4 · Functions · Trig · Transformations · Coordinate geometry · Calculus · Probability · Statistics · Algebra · Algorithms · Exam technique</p>
   </div>
 </div>
 <p>This is the short, friendly version of the big formula sheet. Every rule comes with a picture, a table or a worked example. Look for the coloured boxes:</p>
@@ -318,6 +320,7 @@ svg.g text.qs {{ font-size:9px; text-anchor:middle; }}
 <tr><td><span class="m">f(−x) = f(x)</span> — mirror image in the y-axis. e.g. x², cos x, |x|</td><td><span class="m">f(−x) = −f(x)</span> — same after a half-turn about the origin. e.g. x³, sin x, 1/x</td></tr>
 </table>
 
+{EXTRA_S1}
 {box('trap', 'Double factor touches, triple factor flattens', '<p>At (x − a)² the curve turns back. At (x − a)³ it flattens and <b>keeps going</b>. Students often draw a turning point at a triple factor — don\'t.</p>')}
 {box('check', 'Count features against the degree', '<p>A degree-n polynomial can\'t have more than n x-intercepts or more than n − 1 turning points. A quartic drawn with 4 turning points is wrong on sight.</p>')}
 
@@ -426,6 +429,7 @@ svg.g text.qs {{ font-size:9px; text-anchor:middle; }}
 {box('check', 'Put n = 0, 1, −1 back in', '<p>Always write <b>n ∈ Z</b>. Then substitute n = 0, 1, −1 — the values that land in the domain should match your restricted-domain answers.</p>')}
 {box('trap', 'Factorise before you read the translation', '<p><span class="m">sin(2x − π/3)</span> is <b>not</b> a shift of π/3. Write it as <span class="m">sin(2(x − π/6))</span>: the shift is <b>π/6 to the right</b>. Any time n ≠ 1, take n out of the bracket first.</p>')}
 
+{EXTRA_S2}
 <div class="try">
 <h4>Try it yourself — Section 2</h4>
 <ol>
@@ -472,16 +476,20 @@ svg.g text.qs {{ font-size:9px; text-anchor:middle; }}
 {box('trap', 'Dilation factors from the y-axis go upside down', '<p>f(2x) is a dilation of factor <b>½</b> from the y-axis, not 2 — the graph is squashed towards the y-axis. Vertical ones read straight off: 2f(x) is factor 2 from the x-axis.</p>')}
 {box('trick', 'Asymptotes and endpoints move too', '<p>Apply the point rule to x = h and y = k as well. For y = 1/x → y = 2/(x − 3) + 4, the asymptotes x = 0, y = 0 move to <b>x = 3, y = 4</b>. Fastest way to sketch any transformed graph.</p>')}
 
+{EXTRA_S3}
 <div class="try">
 <h4>Try it yourself — Section 3</h4>
 <ol>
 <li>f(x) = √x and g(x) = x + 2 with dom g = R. Does f(g(x)) exist? If not, give the largest domain of g that fixes it.</li>
 <li>Find the image of the point (1, 3) under <span class="m">y = −f(2(x + 1)) + 4</span>.</li>
 <li>Describe the transformations from y = sin x to <span class="m">y = sin(2x − π/3)</span>.</li>
+{S3_TRY}
 </ol>
 </div>
 
+{CALC}
 {PROB}
+{EXTRA}
 
 <div class="ans pb">
 <h3>Answers — Try it yourself</h3>
@@ -501,12 +509,15 @@ svg.g text.qs {{ font-size:9px; text-anchor:middle; }}
 <p>1. ran g = R ⊄ [0, ∞), so no. Restrict to <b>dom g = [−2, ∞)</b>.</p>
 <p>2. x: 1 ÷ 2 − 1 = −½; &nbsp;y: −3 + 4 = 1 → <b>(−½, 1)</b></p>
 <p>3. sin(2(x − π/6)): dilation of factor ½ from the y-axis, then translation of π/6 units in the positive direction of the x-axis.</p>
+{S3_ANS}
 </div>
 </div>
+<div class="grid2">{CALC_ANS}</div>
 <div class="grid2">{PROB_ANS}</div>
+<div class="grid2">{EXTRA_ANS}</div>
 </div>
 
-<div class="foot">PhDTutor · VCE Mathematical Methods Units 3 &amp; 4 · Formulas &amp; Tricks Made Easy (Sections 1–8)</div>
+<div class="foot">PhDTutor · VCE Mathematical Methods Units 3 &amp; 4 · Formulas &amp; Tricks Made Easy (Sections 1–17)</div>
 </body></html>
 """
 

@@ -15,7 +15,7 @@ def _fmt(v):
 
 
 def graph(funcs, xr, yr, w=210, h=150, asym=(), points=(), labels=(),
-          hlines=(), pad=14, axes=True, title=None):
+          hlines=(), pad=14, axes=True, title=None, shade=(), lines=()):
     """funcs: list of dicts {f, color, dom=(a,b), dash=False, width}.
     asym: list of ('v', x) / ('h', y).  points: (x, y, filled, color).
     labels: (x, y, text, anchor, color, size).  hlines: (y, color) solid lines."""
@@ -39,6 +39,14 @@ def graph(funcs, xr, yr, w=210, h=150, asym=(), points=(), labels=(),
             out.append(f'<line x1="{_fmt(X(v))}" y1="{pad+top-4}" x2="{_fmt(X(v))}" y2="{h-pad+4}" stroke="{C2}" stroke-width="1" stroke-dasharray="4 3"/>')
         else:
             out.append(f'<line x1="{pad-4}" y1="{_fmt(Y(v))}" x2="{w-pad+4}" y2="{_fmt(Y(v))}" stroke="{C2}" stroke-width="1" stroke-dasharray="4 3"/>')
+    for sh in shade:
+        sf, sa, sb, scol = sh[0], sh[1], sh[2], sh[3]
+        sg = sh[4] if len(sh) > 4 else (lambda x: 0)
+        xs_ = [sa + (sb - sa) * i / 120 for i in range(121)]
+        pts = [(X(x), Y(sf(x))) for x in xs_] + [(X(x), Y(sg(x))) for x in reversed(xs_)]
+        out.append(f'<polygon points="{" ".join(f"{_fmt(a)},{_fmt(b)}" for a, b in pts)}" fill="{scol}" fill-opacity=".28"/>')
+    for (lx1, ly1, lx2, ly2, lcol) in lines:
+        out.append(f'<line x1="{_fmt(X(lx1))}" y1="{_fmt(Y(ly1))}" x2="{_fmt(X(lx2))}" y2="{_fmt(Y(ly2))}" stroke="{lcol}" stroke-width="1.4" stroke-dasharray="5 3"/>')
     for yv, col in hlines:
         out.append(f'<line x1="{pad-4}" y1="{_fmt(Y(yv))}" x2="{w-pad+4}" y2="{_fmt(Y(yv))}" stroke="{col}" stroke-width="1.3"/>')
     for fn in funcs:
