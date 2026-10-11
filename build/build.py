@@ -1,10 +1,11 @@
-"""Builds the simplified Methods 3&4 formula sheet (Part 1) as HTML."""
+"""Builds the simplified Methods 3&4 formula sheet as HTML."""
 import math
 import pathlib
 import sys
 
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 from svg import graph, C1, C2, C3, C4, INK  # noqa: E402
+from prob import PROB, PROB_ANS, PROB_CSS  # noqa: E402
 
 PI = math.pi
 s = math.sin
@@ -205,6 +206,7 @@ svg.g text.qs {{ font-size:9px; text-anchor:middle; }}
 .pb {{ break-before:page; }}
 .foot {{ margin-top:14px; border-top:1px solid var(--line); padding-top:5px; font-size:8.4pt; color:var(--muted); text-align:center; }}
 .small {{ font-size:9pt; color:var(--muted); }}
+{PROB_CSS}
 </style></head><body>
 <svg width="0" height="0" style="position:absolute"><defs>
 <marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#8a9896"/></marker>
@@ -213,8 +215,8 @@ svg.g text.qs {{ font-size:9px; text-anchor:middle; }}
 <div class="head">
   <div class="logo">PhD</div>
   <div>
-    <h1>Formulas &amp; Tricks — Made Easy <span class="pill">Part 1</span></h1>
-    <p>VCE Mathematical Methods Units 3 &amp; 4 · Functions &amp; graphs · Trigonometry · Composites &amp; transformations</p>
+    <h1>Formulas &amp; Tricks — Made Easy <span class="pill">Units 3 &amp; 4</span></h1>
+    <p>VCE Mathematical Methods Units 3 &amp; 4 · Functions · Trigonometry · Transformations · Probability · Normal distribution · Sample proportions</p>
   </div>
 </div>
 <p>This is the short, friendly version of the big formula sheet. Every rule comes with a picture, a table or a worked example. Look for the coloured boxes:</p>
@@ -479,7 +481,9 @@ svg.g text.qs {{ font-size:9px; text-anchor:middle; }}
 </ol>
 </div>
 
-<div class="ans">
+{PROB}
+
+<div class="ans pb">
 <h3>Answers — Try it yourself</h3>
 <div class="grid2">
 <div>
@@ -499,12 +503,13 @@ svg.g text.qs {{ font-size:9px; text-anchor:middle; }}
 <p>3. sin(2(x − π/6)): dilation of factor ½ from the y-axis, then translation of π/6 units in the positive direction of the x-axis.</p>
 </div>
 </div>
+<div class="grid2">{PROB_ANS}</div>
 </div>
 
-<div class="foot">PhDTutor · VCE Mathematical Methods Units 3 &amp; 4 · Formulas &amp; Tricks Made Easy — Part 1 (Sections 1–3)</div>
+<div class="foot">PhDTutor · VCE Mathematical Methods Units 3 &amp; 4 · Formulas &amp; Tricks Made Easy (Sections 1–8)</div>
 </body></html>
 """
 
-out = pathlib.Path(__file__).parent.parent / "Methods-3-4-Formulas-Made-Easy-Part1.html"
+out = pathlib.Path(__file__).parent.parent / "Methods-3-4-Formulas-Made-Easy.html"
 out.write_text(html, encoding="utf-8")
 print("wrote", out)
